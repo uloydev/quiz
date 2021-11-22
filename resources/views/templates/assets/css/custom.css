@@ -1,0 +1,41 @@
+.bg-custom-1 {
+    background-color: #FCF8EC !important;
+}
+
+.bg-custom-2 {
+    background-color: #D0E8F2 !important;
+}
+
+.bg-custom-3 {
+    background-color: #7AA3B1 !important;
+}
+
+.bg-custom-4 {
+    background-color: #466369 !important;
+}
+
+.text-custom-1 {
+    color: #FCF8EC !important;
+}
+
+.text-custom-2 {
+    color: #D0E8F2 !important;
+}
+
+.text-custom-3 {
+    color: #7AA3B1 !important;
+}
+
+.text-custom-4 {
+    color: #466369 !important;
+}
+
+/* main {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+} */

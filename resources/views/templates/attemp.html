@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>Available Quiz</title>
+</head>
+
+<body class="bg-custom-1">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-custom-4">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/"
+                        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline text-custom-1">Dashboard</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0 d-flex align-content-center">
+                                <i class="bx bx-question-mark bx-sm bg-custom-1 rounded-3 me-3"></i><div class="ms-1 d-none d-sm-inline text-custom-2">Available Quiz</div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0 d-flex align-content-center">
+                                <i class="bx bx-history bx-sm bg-custom-1 rounded-3 me-3"></i><div class="ms-1 d-none d-sm-inline text-custom-2">History Quiz</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30"
+                                class="rounded-circle">
+                            <span class="d-none d-sm-inline mx-1">loser</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col py-3">
+                <div class="container">
+                    <h2 class="text-custom-4 mb-4">Quiz CSS Pemula</h2>
+                    <hr>
+                    <div class="d-md-flex justify-content-md-between mb-4">
+                        <span class="fs-3 text-custom-4 fw-bolder">1 of 5 Question</span>
+                        <div>
+                            <button class="btn bg-custom-3 text-custom-1 px-5" disabled>Prev</button>
+                            <button class="btn bg-custom-3 text-custom-1 px-5">Next</button>
+                        </div>
+                    </div>
+                    <div class="container-md bg-custom-2 p-3 rounded-3">
+                        <input type="checkbox" class="btn-check checkbox-answer" id="inputAnswer1" autocomplete="off">
+                        <input type="checkbox" class="btn-check checkbox-answer" id="inputAnswer2" autocomplete="off">
+                        <input type="checkbox" class="btn-check checkbox-answer" id="inputAnswer3" autocomplete="off">
+                        <input type="checkbox" class="btn-check checkbox-answer" id="inputAnswer4" autocomplete="off">
+                        <p class="fs-5 fw-bolder mx-4 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi soluta nisi blanditiis Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et voluptates dolorem aliquid delectus maiores dolor voluptatum sint veniam distinctio numquam ?</p>
+                        <div class="row bg-white rounded-3 p-3 mb-3 mx-4">
+                            <div class="col-1">
+                                <button class="btn btn-outline-secondary btn-pick-answer" data-input-id="inputAnswer1">A</button>
+                            </div>
+                            <div class="col-11">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero repudiandae optio sed placeat tempora consectetur inventore ad laboriosam? Accusamus, accusantium?
+                            </div>
+                        </div>
+                        <div class="row bg-white rounded-3 p-3 mb-3 mx-4">
+                            <div class="col-1">
+                                <button class="btn btn-outline-secondary btn-pick-answer" data-input-id="inputAnswer2">B</button>
+                            </div>
+                            <div class="col-11">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero repudiandae optio sed placeat tempora consectetur inventore ad laboriosam? Accusamus, accusantium?
+                            </div>
+                        </div>
+                        <div class="row bg-white rounded-3 p-3 mb-3 mx-4">
+                            <div class="col-1">
+                                <button class="btn btn-outline-secondary btn-pick-answer" data-input-id="inputAnswer3">C</button>
+                            </div>
+                            <div class="col-11">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero repudiandae optio sed placeat tempora consectetur inventore ad laboriosam? Accusamus, accusantium?
+                            </div>
+                        </div>
+                        <div class="row bg-white rounded-3 p-3 mb-3 mx-4">
+                            <div class="col-1">
+                                <button class="btn btn-outline-secondary btn-pick-answer" data-input-id="inputAnswer4">D</button>
+                            </div>
+                            <div class="col-11">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero repudiandae optio sed placeat tempora consectetur inventore ad laboriosam? Accusamus, accusantium?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let btnPickAnswers = document.querySelectorAll(".btn-pick-answer");
+
+        const resetCheckbox = () => {
+            document.querySelectorAll('.checkbox-answer').forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+        };
+
+        const resetBtnAnswer = (buttons) => {
+            buttons.forEach((button) => {
+                button.classList.remove('bg-secondary');
+                button.classList.remove('text-white');
+            });
+        };
+        
+        btnPickAnswers.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                resetCheckbox();
+                resetBtnAnswer(btnPickAnswers);
+                document.getElementById(button.dataset.inputId).checked = true;
+                button.classList.add('bg-secondary');
+                button.classList.add('text-white');
+            })
+        })
+    </script>
+</body>
+
+</html>
