@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Quiz extends Model
+class Attemp extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function questions()
+    protected $with = ['quiz'];
+
+    public function quiz()
     {
-        return $this->hasMany('APP\Models\Question');
+        return $this->hasOne('App\Models\Quiz');
     }
 }

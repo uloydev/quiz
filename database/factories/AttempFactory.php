@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class QuizFactory extends Factory
+class AttempFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class QuizFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence( $nbWords=3),
-            'time' => $this->faker->randomElement([10, 20, 30]),
+            //
         ];
     }
 }
