@@ -11,10 +11,15 @@ class Question extends Model
 
     protected $guarded = ['answer_option_id'];
 
-    protected $with = ['options'];
+    protected $appends = ['answer'];
 
     public function options()
     {
-        return $this->hasMany('APP\Models\Option');
+        return $this->hasMany('App\Models\Option');
+    }
+
+    public function GetAnswerAttribute()
+    {
+        return 0;
     }
 }

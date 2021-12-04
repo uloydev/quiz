@@ -8,6 +8,10 @@
         <form action="{{ route('register') }}" method="post">
             @csrf
             <div class="mb-3">
+                <label for="nameInput" class="form-label text-custom-4">Name</label>
+                <input type="text" class="form-control" id="nameInput" name="name">
+            </div>
+            <div class="mb-3">
                 <label for="emailInput" class="form-label text-custom-4">Email</label>
                 <input type="email" class="form-control" id="emailInput" name="email">
             </div>

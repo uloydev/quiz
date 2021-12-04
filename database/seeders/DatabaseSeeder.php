@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         User::factory(1)->state(["email" => "admin@mail.com", "is_admin" => true])->create();
         User::factory(10)->create();
 
-        Quiz::factory()->count(10)->has(
+        Quiz::factory()->count(9)->has(
             Question::factory()->count(10)->state(function (array $attributes, Quiz $quiz) {
                 return ['quiz_id' => $quiz->id];
             })->has(

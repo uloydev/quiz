@@ -11,8 +11,10 @@ class Quiz extends Model
 
     protected $guarded = [];
 
+    // protected $withCount = ['questions'];
+
     public function questions()
     {
-        return $this->hasMany('APP\Models\Question');
+        return $this->hasMany('App\Models\Question');
     }
 }

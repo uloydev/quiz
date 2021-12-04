@@ -17,7 +17,7 @@ class CreateAttempsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('quiz_id');
-            $table->foreignId('score');
+            $table->unsignedInteger('score')->nullable();
             $table->timestamps();
         });
     }

@@ -7,14 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
+    <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>{{ config('app.name') }} - @yield('title')</title>
 </head>
 
 <body class="bg-custom-1">
-    @yield('content')
+    <div id="app">
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Oops!</strong> {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+        @yield('content')
     </div>
     <script src="{{ asset("assets/js/bootstrap.bundle.min.js") }}"></script>
+    <script src="{{ asset("js/app.js") }}"></script>
 </body>
 
 </html>
