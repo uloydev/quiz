@@ -50,7 +50,6 @@ class QuizController extends Controller
 
     public function finishAttemp(Request $request,Quiz $quiz)
     {   
-        // return Auth::user();
         if ($quiz->id == $request->id) {
             $correct = Question::whereIn('answer_option_id', collect($request->questions)->pluck('answer'))->where('quiz_id', $quiz->id)->count();
 

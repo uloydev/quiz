@@ -13,12 +13,12 @@
                     <div class="row g-4">
                         @foreach ($availableQuiz as $quiz)
                             <div class="col-md-4 p-2 h-auto">
-                                <div class="bg-custom-2 rounded-3 p-3 text-custom-3 shadow h-100">
-                                    <h4 class="text-custom-4">{{ $quiz->name }}</h4>
+                                <div class="bg-custom-2 rounded-3 p-3 text-custom-4 shadow h-100 d-flex flex-column justify-content-between">
+                                    <h4 class="text-custom-5">{{ $quiz->name }}</h4>
                                     <hr>
-                                    <p>Waktu : {{ $quiz->time }} menit</p>
-                                    <p>Pertanyaan : {{ $quiz->questions_count }}</p>
-                                    <a class="btn bg-custom-4 text-custom-1 btn-sm " href="{{ route('user.attemp', ['quiz'=> $quiz->id]) }}">Attemp Now</a>
+                                    <p>Time : {{ $quiz->time }} menit</p>
+                                    <p>Question : {{ $quiz->questions_count }}</p>
+                                    <a class="btn bg-custom-4 text-custom-1 btn w-100 font-weight-bold" href="{{ route('user.attemp', ['quiz'=> $quiz->id]) }}">Attemp Now</a>
                                 </div>
                             </div>
                         @endforeach
