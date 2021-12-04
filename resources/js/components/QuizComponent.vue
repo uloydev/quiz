@@ -45,7 +45,6 @@
         mounted() {
             axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
             axios.defaults.headers.common['X-CSRF-TOKEN'] = this.token
-            console.log(url)
             this.timerInterval = setInterval(this.updateTimer, 1000)
         },
         methods: {
@@ -66,7 +65,12 @@
             finishAttemp: function (){
                 clearInterval(this.timerInterval)
                 console.log('finished!')
-                // axios.post('/')
+                axios.post(this.url, this.quiz).then((ress) => {
+                    console.log(ress)
+                    window.location.href = '/history'
+                }).catch((err) => {
+                    console.log(err)
+                })
             },
         },
         props : [
@@ -79,7 +83,7 @@
                 questionsCount: this.quiz.questions.length,
                 currentQuestion: 1,
                 timer: {
-                    minute: 1,
+                    minute: this.quiz.time,
                     second: 0
                 }
             }

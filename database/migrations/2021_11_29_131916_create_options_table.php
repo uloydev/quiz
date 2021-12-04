@@ -17,7 +17,6 @@ class CreateOptionsTable extends Migration
             $table->id();
             $table->text('text');
             $table->foreignId('question_id');
-            $table->boolean('is_answer')->default(false);
             $table->timestamps();
         });
     }

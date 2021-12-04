@@ -2198,7 +2198,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.common["X-Requested-With"]) = 'XMLHttpRequest';
     (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.common["X-CSRF-TOKEN"]) = this.token;
-    console.log(url);
     this.timerInterval = setInterval(this.updateTimer, 1000);
   },
   methods: {
@@ -2220,7 +2219,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     finishAttemp: function finishAttemp() {
       clearInterval(this.timerInterval);
-      console.log('finished!'); // axios.post('/')
+      console.log('finished!');
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(this.url, this.quiz).then(function (ress) {
+        console.log(ress);
+        window.location.href = '/history';
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   },
   props: ['quiz', 'token', 'url'],
@@ -2229,7 +2234,7 @@ __webpack_require__.r(__webpack_exports__);
       questionsCount: this.quiz.questions.length,
       currentQuestion: 1,
       timer: {
-        minute: 1,
+        minute: this.quiz.time,
         second: 0
       }
     };

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="UTF-8">
@@ -10,10 +10,16 @@
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>{{ config('app.name') }} - @yield('title')</title>
+
+    <style>
+        #app > .container-fluid, #app > .container-fluid > .row{
+            height: 100%;
+        }
+    </style>
 </head>
 
-<body class="bg-custom-1">
-    <div id="app">
+<body class="bg-custom-1 h-100">
+    <div id="app" class="h-100">
         @foreach ($errors->all() as $error)
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Oops!</strong> {{ $error }}

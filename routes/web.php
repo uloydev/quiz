@@ -22,7 +22,7 @@ Route::middleware(['auth', 'roleCheck:user'])->name('user.')->group(function () 
     Route::get('/dashboard', [App\Http\Controllers\QuizController::class, 'index'])->name('dashboard');
     Route::get('/history', [App\Http\Controllers\QuizController::class, 'history'])->name('history');
     Route::get('/quiz/{quiz}/attemp', [App\Http\Controllers\QuizController::class, 'attemp'])->name('attemp');
-    Route::post('/quiz/attemp', [App\Http\Controllers\QuizController::class, 'finishAttemp']);
+    Route::post('/quiz/{quiz}/attemp', [App\Http\Controllers\QuizController::class, 'finishAttemp']);
 });
 
 // admin routes

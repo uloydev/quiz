@@ -11,7 +11,7 @@ class Quiz extends Model
 
     protected $guarded = [];
 
-    // protected $withCount = ['questions'];
+    protected $withCount = ['questions'];
 
     public function questions()
     {

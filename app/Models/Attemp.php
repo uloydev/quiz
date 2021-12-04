@@ -15,6 +15,6 @@ class Attemp extends Model
 
     public function quiz()
     {
-        return $this->hasOne('App\Models\Quiz');
+        return $this->belongsTo('App\Models\Quiz');
     }
 }

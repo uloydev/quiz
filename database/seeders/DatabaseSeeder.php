@@ -31,5 +31,12 @@ class DatabaseSeeder extends Seeder
                 })
             )
         )->create();
+
+        $questions = Question::with('options')->get();
+        foreach ($questions as $question) {
+            $question->update([
+                'answer_option_id' => $question->options->random()->id,
+            ]);
+        }
     }
 }

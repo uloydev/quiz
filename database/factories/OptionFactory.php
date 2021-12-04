@@ -16,7 +16,6 @@ class OptionFactory extends Factory
         return [
             'text' => $this->faker->sentence($nbWords=7),
             'question_id' => 1,
-            'is_answer' => $this->faker->boolean(25),
         ];
     }
 }

@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->text("text");
             $table->foreignId('quiz_id');
+            $table->foreignId('answer_option_id')->nullable();
             $table->timestamps();
         });
     }
