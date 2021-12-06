@@ -28,6 +28,6 @@ Route::middleware(['auth', 'roleCheck:user'])->name('user.')->group(function () 
 // admin routes
 Route::name('admin.')->middleware(['auth', 'roleCheck:admin'])->prefix('admin')->group(function () {
     Route::redirect('/', '/dashboard');
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
 
 });
