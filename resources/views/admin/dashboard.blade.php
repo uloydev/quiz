@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row pt-3">
         <admin-card action="{{ '' }}" name="Quiz" icon="weekend" data="{{ $quizCount }}"></admin-card>
         <admin-card action="{{ '' }}" name="User" icon="person" data="{{ $userCount }}"></admin-card>
         <admin-card action="{{ '' }}" name="Attemp" icon="check" data="{{ $attempCount }}"></admin-card>
@@ -21,28 +21,26 @@
                 </div>
             </div>
             <div class="card-body">
-                <h6 class="mb-0 ">Completed Tasks</h6>
-                <p class="text-sm ">Last Campaign Performance</p>
-                <hr class="dark horizontal">
-                <div class="d-flex ">
-                    <i class="material-icons text-sm my-auto me-1">schedule</i>
-                    <p class="mb-0 text-sm">just updated</p>
-                </div>
+                <h6 class="mb-0 ">User Attemps For Last 7 Days</h6>
             </div>
         </div>
     </div>
+    <div id="chartData" data-json="{{ json_encode($timestamps) }}"></div>
 @endsection
 
 @section('scripts')
     <script>
         var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
 
+        var chartData = JSON.parse(document.getElementById('chartData').dataset.json);
+        console.log(chartData);
+
         new Chart(ctx3, {
             type: "line",
             data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                labels: Object.keys(chartData).reverse(),
                 datasets: [{
-                    label: "Mobile apps",
+                    label: "Attemps",
                     tension: 0,
                     borderWidth: 0,
                     pointRadius: 5,
@@ -52,7 +50,7 @@
                     borderWidth: 4,
                     backgroundColor: "transparent",
                     fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    data: Object.values(chartData).reverse(),
                     maxBarThickness: 6
 
                 }],

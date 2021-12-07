@@ -17,25 +17,48 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('material-dashboard/css/material-dashboard.css?v=3.0.0') }}" rel="stylesheet" />
-    <link href="{{ asset('sss/app.css') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('material-dashboard/css/material-dashboard.css?v=3.0.0') }}"
+        rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
     @include('layouts.admin-sidebar')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            navbar-scroll="true">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl bg-gradient-secondary shadow-dark my-4"
+            id="navbarBlur" navbar-scroll="true">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
-                    <h6 class="font-weight-bolder mb-0">@yield('page-name')</h6>
+                    <h6 class="font-weight-bolder mb-0 fs-4 text-white">@yield('page-name')</h6>
                 </nav>
             </div>
         </nav>
         <!-- End Navbar -->
-        <div class="container-fluid py-4" id="app">
+        <div class="container-fluid py-2" id="app">
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible text-white text-sm" role="alert">
+                    <span class="text-md font-weight-bold pe-4">Error. </span> 
+                    {{ $error }}
+                    <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
+                        aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            @endforeach
+
+            @isset ($success)
+                <div class="alert alert-info alert-dismissible text-white text-sm" role="alert">
+                    <span class="text-md font-weight-bold pe-4">Success. </span> 
+                    {{ $success }}
+                    <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
+                        aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            @endisset
+
             @yield('content')
             @include('layouts.admin-footer')
         </div>

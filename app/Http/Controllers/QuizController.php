@@ -53,7 +53,7 @@ class QuizController extends Controller
         if ($quiz->id == $request->id) {
             $correct = Question::whereIn('answer_option_id', collect($request->questions)->pluck('answer'))->where('quiz_id', $quiz->id)->count();
 
-            $score = $correct / $quiz->questions_count * 100;
+            $score = round($correct / $quiz->questions_count * 100);
 
             $attemp = Attemp::create([
                 'user_id' => Auth::id(),

@@ -29,5 +29,6 @@ Route::middleware(['auth', 'roleCheck:user'])->name('user.')->group(function () 
 Route::name('admin.')->middleware(['auth', 'roleCheck:admin'])->prefix('admin')->group(function () {
     Route::redirect('/', '/dashboard');
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('user', App\Http\Controllers\UserController::class);
 
 });
