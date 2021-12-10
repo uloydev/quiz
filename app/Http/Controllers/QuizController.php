@@ -13,6 +13,19 @@ class QuizController extends Controller
 {
     public function index()
     {
+        return view('admin.quiz.index',[
+            'quizzes' => Quiz::withCount('attemps')->paginate(5)->withQueryString(),
+        ]);
+    }
+
+    public function destroy(Quiz $quiz)
+    {
+        $quiz->delete();
+        return redirect()->route('admin.quiz.index')->with('success', 'Quiz deleted succesfuly!');
+    }
+
+    public function availableQuiz()
+    {
         $attempsQuizId = Attemp::where('user_id', Auth::id())->pluck('quiz_id');
 
         return view('user.dashboard', [
@@ -35,16 +48,19 @@ class QuizController extends Controller
         if (Attemp::where('user_id', $user->id)->firstWhere('quiz_id', $quiz->id)) {
             return redirect()->route('user.history')->withErrors(['you already attemp this quiz !']);
         }
+
+        $quiz = Quiz::with([
+            'questions' => function ($query) {
+                return $query->with([
+                    'options' => function ($query) {
+                        return $query->inRandomOrder();
+                    },
+                ])->inRandomOrder();
+            },
+        ])->find($quiz->id);
+
         return view('user.attemp', [
-            'quiz' => Quiz::with([
-                'questions' => function ($query) {
-                    return $query->with([
-                        'options' => function ($query) {
-                            return $query->inRandomOrder();
-                        },
-                    ])->inRandomOrder();
-                },
-            ])->find($quiz->id),
+            'quiz' => $quiz,
         ]);
     }
 
@@ -68,5 +84,12 @@ class QuizController extends Controller
         } else {
             return abort(404);
         }
+    }
+
+    public function allAttemp()
+    {
+        return view('admin.attemp',[
+            'attemps' => Attemp::with(['user', 'quiz'])->whereHas('quiz')->whereHas('user')->paginate('20'),
+        ]);
     }
 }

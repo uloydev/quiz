@@ -48,16 +48,16 @@
                 </div>
             @endforeach
 
-            @isset ($success)
+            @if (session('success'))
                 <div class="alert alert-info alert-dismissible text-white text-sm" role="alert">
                     <span class="text-md font-weight-bold pe-4">Success. </span> 
-                    {{ $success }}
+                    {{ session('success') }}
                     <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
                         aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-            @endisset
+            @endif
 
             @yield('content')
             @include('layouts.admin-footer')

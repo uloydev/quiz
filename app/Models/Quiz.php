@@ -17,4 +17,9 @@ class Quiz extends Model
     {
         return $this->hasMany('App\Models\Question');
     }
+
+    public function attemps()
+    {
+        return $this->hasMany('App\Models\Attemp');
+    }
 }

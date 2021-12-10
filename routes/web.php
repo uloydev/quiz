@@ -19,7 +19,7 @@ Route::redirect('/', '/login');
 
 // user routes
 Route::middleware(['auth', 'roleCheck:user'])->name('user.')->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\QuizController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\QuizController::class, 'availableQuiz'])->name('dashboard');
     Route::get('/history', [App\Http\Controllers\QuizController::class, 'history'])->name('history');
     Route::get('/quiz/{quiz}/attemp', [App\Http\Controllers\QuizController::class, 'attemp'])->name('attemp');
     Route::post('/quiz/{quiz}/attemp', [App\Http\Controllers\QuizController::class, 'finishAttemp']);
@@ -29,6 +29,9 @@ Route::middleware(['auth', 'roleCheck:user'])->name('user.')->group(function () 
 Route::name('admin.')->middleware(['auth', 'roleCheck:admin'])->prefix('admin')->group(function () {
     Route::redirect('/', '/dashboard');
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
-    Route::resource('user', App\Http\Controllers\UserController::class);
+    Route::resource('user', App\Http\Controllers\UserController::class)->only(['index', 'destroy']);
+    Route::resource('quiz', App\Http\Controllers\QuizController::class);
+    Route::resource('quiz.question', App\Http\Controllers\QuestionController::class);
+    Route::get('/attemp', [App\Http\Controllers\QuizController::class, 'allAttemp'])->name('attemp');
 
 });

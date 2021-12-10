@@ -17,4 +17,9 @@ class Attemp extends Model
     {
         return $this->belongsTo('App\Models\Quiz');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
