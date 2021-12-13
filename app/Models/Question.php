@@ -9,7 +9,7 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['answer_option_id'];
+    // protected $guarded = ['answer_option_id'];
 
     protected $appends = ['answer'];
 

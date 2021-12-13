@@ -18,6 +18,15 @@ class QuizController extends Controller
         ]);
     }
 
+    public function update(Quiz $quiz, Request $request)
+    {
+        $quiz->update([
+            'name' => $request->name,
+            'time' => $request->time,
+        ]);
+        return redirect()->back()->withSuccess('quiz updated');
+    }
+
     public function destroy(Quiz $quiz)
     {
         $quiz->delete();

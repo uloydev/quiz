@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('quiz-component', require('./components/QuizComponent.vue').default);
 Vue.component('admin-card', require('./components/AdminCard.vue').default);
+Vue.component('edit-question', require('./components/EditQuestion.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

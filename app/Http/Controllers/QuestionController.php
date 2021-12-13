@@ -15,4 +15,17 @@ class QuestionController extends Controller
             'questions' => Question::where('quiz_id', $quiz->id)->paginate(5)->withQueryString()
         ]);
     }
+
+    public function destroy($quiz, Question $question) 
+    {
+        $question->delete();
+        return redirect()->back()->withSuccess('question deleted');
+    }
+
+    public function edit($quiz, $question)
+    {
+        return view('admin.quiz.question.edit', [
+            'question' => Question::with('options')->find($question)
+        ]);
+    }
 }
